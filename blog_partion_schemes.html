@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Partition Schemes, BIOS, and Windows Installation | Enlight Vocational Institute</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:linear-gradient(135deg,#0056b3,#009688);
+    color:#fff;
+    padding:70px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:2.8rem;
+    margin-bottom:15px;
+}
+
+header p{
+    font-size:1.1rem;
+    max-width:800px;
+    margin:auto;
+}
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+article{
+    background:#fff;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+h2{
+    color:#0056b3;
+    margin-top:35px;
+    margin-bottom:15px;
+    border-left:5px solid #009688;
+    padding-left:12px;
+}
+
+h3{
+    color:#009688;
+    margin-top:25px;
+}
+
+p{
+    margin-bottom:18px;
+}
+
+ul,ol{
+    margin-left:25px;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:25px 0;
+    overflow:hidden;
+}
+
+table th{
+    background:#0056b3;
+    color:#fff;
+    padding:14px;
+}
+
+table td{
+    border:1px solid #ddd;
+    padding:12px;
+}
+
+table tr:nth-child(even){
+    background:#f7f7f7;
+}
+
+.note{
+    background:#eaf7ff;
+    border-left:5px solid #2196f3;
+    padding:18px;
+    margin:25px 0;
+}
+
+.tip{
+    background:#ecfff3;
+    border-left:5px solid #28a745;
+    padding:18px;
+    margin:25px 0;
+}
+
+footer{
+    background:#1f2937;
+    color:#fff;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:50px;
+}
+
+@media(max-width:768px){
+
+header h1{
+    font-size:2rem;
+}
+
+article{
+    padding:25px;
+}
+
+table{
+    display:block;
+    overflow-x:auto;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Understanding Partition Schemes, BIOS, and Windows Installation</h1>
+<p>A Beginner's Guide by <strong>Enlight Vocational Institute</strong></p>
+</header>
+
+<div class="container">
+
+<article>
+
+<p>
+Computers are an essential part of modern education and business. Whether you are repairing a computer,
+replacing a hard drive, or installing a fresh operating system, understanding partition schemes and BIOS
+settings is a fundamental ICT skill. This guide explains these concepts in a simple and practical manner.
+</p>
+
+<h2>What is BIOS?</h2>
+
+<p>
+BIOS (Basic Input/Output System) is firmware stored on a computer's motherboard.
+It is the first software that runs when a computer is powered on.
+</p>
+
+<p>Its responsibilities include:</p>
+
+<ul>
+<li>Checking hardware components.</li>
+<li>Detecting storage devices and peripherals.</li>
+<li>Starting the boot process.</li>
+<li>Loading the operating system.</li>
+</ul>
+
+<div class="note">
+Modern computers mainly use <strong>UEFI (Unified Extensible Firmware Interface)</strong>, which is faster,
+more secure, and supports modern storage devices.
+</div>
+
+<h2>BIOS vs UEFI</h2>
+
+<table>
+<tr>
+<th>BIOS</th>
+<th>UEFI</th>
+</tr>
+
+<tr>
+<td>Older technology</td>
+<td>Modern replacement</td>
+</tr>
+
+<tr>
+<td>Uses MBR disks</td>
+<td>Uses GPT disks</td>
+</tr>
+
+<tr>
+<td>Supports up to 2TB boot disks</td>
+<td>Supports drives larger than 2TB</td>
+</tr>
+
+<tr>
+<td>Slower startup</td>
+<td>Faster startup</td>
+</tr>
+
+<tr>
+<td>Limited security</td>
+<td>Supports Secure Boot</td>
+</tr>
+
+</table>
+
+<h2>What is a Partition Scheme?</h2>
+
+<p>
+A partition scheme determines how information is organized on a storage device such as a hard drive or SSD.
+The two most common partition styles are:
+</p>
+
+<ul>
+<li><strong>MBR (Master Boot Record)</strong></li>
+<li><strong>GPT (GUID Partition Table)</strong></li>
+</ul>
+
+<h2>Master Boot Record (MBR)</h2>
+
+<p>
+MBR is the traditional partition style used on older computers.
+</p>
+
+<h3>Advantages</h3>
+
+<ul>
+<li>Compatible with older BIOS systems.</li>
+<li>Works with older versions of Windows.</li>
+</ul>
+
+<h3>Limitations</h3>
+
+<ul>
+<li>Maximum disk size of 2TB.</li>
+<li>Supports only four primary partitions.</li>
+<li>Stores partition information in only one location.</li>
+</ul>
+
+<h2>GUID Partition Table (GPT)</h2>
+
+<p>
+GPT is the modern partition style designed for UEFI systems.
+</p>
+
+<h3>Advantages</h3>
+
+<ul>
+<li>Supports drives larger than 2TB.</li>
+<li>Allows many more partitions.</li>
+<li>Stores multiple copies of partition data for reliability.</li>
+<li>Required for many Windows 11 installations.</li>
+</ul>
+
+<h3>Limitation</h3>
+
+<ul>
+<li>Requires UEFI to boot Windows.</li>
+</ul>
+
+<h2>MBR vs GPT Comparison</h2>
+
+<table>
+
+<tr>
+<th>Feature</th>
+<th>MBR</th>
+<th>GPT</th>
+</tr>
+
+<tr>
+<td>Maximum Disk Size</td>
+<td>2TB</td>
+<td>Over 2TB</td>
+</tr>
+
+<tr>
+<td>Maximum Partitions</td>
+<td>4 Primary</td>
+<td>Up to 128</td>
+</tr>
+
+<tr>
+<td>Boot Mode</td>
+<td>Legacy BIOS</td>
+<td>UEFI</td>
+</tr>
+
+<tr>
+<td>Reliability</td>
+<td>Lower</td>
+<td>Higher</td>
+</tr>
+
+<tr>
+<td>Recommended Today</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+
+</table>
+
+<h2>Which Partition Scheme Should You Choose?</h2>
+
+<h3>Choose MBR if:</h3>
+
+<ul>
+<li>Your computer uses Legacy BIOS.</li>
+<li>You are installing an older operating system.</li>
+<li>Your hard drive is less than 2TB.</li>
+</ul>
+
+<h3>Choose GPT if:</h3>
+
+<ul>
+<li>Your computer supports UEFI.</li>
+<li>You are installing Windows 10 or Windows 11.</li>
+<li>Your drive is larger than 2TB.</li>
+<li>You want better reliability and security.</li>
+</ul>
+
+<h2>Preparing for Windows Installation</h2>
+
+<p>Before beginning the installation, ensure you have:</p>
+
+<ul>
+<li>A bootable Windows USB drive.</li>
+<li>The Windows installation files.</li>
+<li>A computer that meets the system requirements.</li>
+<li>A backup of important files.</li>
+<li>Correct BIOS or UEFI settings.</li>
+</ul>
+
+<h2>Changing the Boot Order</h2>
+
+<ol>
+<li>Insert the Windows USB drive.</li>
+<li>Restart the computer.</li>
+<li>Press the BIOS key (F2, F10, F12, DEL or ESC).</li>
+<li>Open Boot Settings.</li>
+<li>Set the USB drive as the first boot device.</li>
+<li>Save changes and restart.</li>
+</ol>
+
+<h2>Installing Windows Step by Step</h2>
+
+<h3>Step 1: Boot from the USB</h3>
+
+<p>Start the computer using the Windows installation USB.</p>
+
+<h3>Step 2: Select Language</h3>
+
+<ul>
+<li>Language</li>
+<li>Time & Currency</li>
+<li>Keyboard Layout</li>
+</ul>
+
+<p>Click <strong>Next</strong>.</p>
+
+<h3>Step 3: Install Windows</h3>
+
+<p>Click <strong>Install Now</strong>.</p>
+
+<h3>Step 4: Enter Product Key</h3>
+
+<p>
+Enter your Windows product key or choose
+<strong>I don't have a product key</strong> if appropriate.
+</p>
+
+<h3>Step 5: Select Windows Edition</h3>
+
+<ul>
+<li>Windows 10 Home</li>
+<li>Windows 10 Pro</li>
+<li>Windows 11 Home</li>
+<li>Windows 11 Pro</li>
+</ul>
+
+<h3>Step 6: Accept the License Agreement</h3>
+
+<p>Read and accept the Microsoft License Terms.</p>
+
+<h3>Step 7: Choose Installation Type</h3>
+
+<p>Select:</p>
+
+<p><strong>Custom: Install Windows Only (Advanced)</strong></p>
+
+<h3>Step 8: Partition the Drive</h3>
+
+<ul>
+<li>Delete old partitions if no longer needed.</li>
+<li>Select Unallocated Space.</li>
+<li>Click <strong>New</strong>.</li>
+<li>Allow Windows to create required partitions.</li>
+<li>Select the primary partition.</li>
+<li>Click <strong>Next</strong>.</li>
+</ul>
+
+<h3>Step 9: Windows Installation</h3>
+
+<p>
+Windows will copy files, install features, install updates, and restart several times.
+Do not remove the USB drive until the installation is complete.
+</p>
+
+<h3>Step 10: Initial Setup</h3>
+
+<ul>
+<li>Select your region.</li>
+<li>Choose keyboard layout.</li>
+<li>Connect to a network.</li>
+<li>Create a user account.</li>
+<li>Create a password.</li>
+<li>Configure privacy settings.</li>
+</ul>
+
+<h2>After Installing Windows</h2>
+
+<ul>
+<li>Install device drivers.</li>
+<li>Run Windows Update.</li>
+<li>Activate Windows.</li>
+<li>Install antivirus software.</li>
+<li>Install essential applications.</li>
+<li>Restore your files.</li>
+</ul>
+
+<h2>Common Installation Problems</h2>
+
+<h3>Windows Cannot Be Installed to This Disk</h3>
+
+<p>
+This usually happens because the partition style does not match the boot mode.
+</p>
+
+<ul>
+<li>UEFI → GPT</li>
+<li>Legacy BIOS → MBR</li>
+</ul>
+
+<h3>Computer Will Not Boot from USB</h3>
+
+<ul>
+<li>Incorrect boot order.</li>
+<li>Secure Boot settings.</li>
+<li>USB not created correctly.</li>
+</ul>
+
+<h3>Hard Drive Not Detected</h3>
+
+<ul>
+<li>Loose cables.</li>
+<li>Faulty storage device.</li>
+<li>Missing storage controller drivers.</li>
+</ul>
+
+<h3>Missing Drivers</h3>
+
+<p>
+Download and install the latest drivers from your computer or motherboard manufacturer.
+</p>
+
+<div class="tip">
+<strong>Best Practice:</strong> Always back up important files before reinstalling Windows,
+use GPT with UEFI whenever possible, install Windows updates immediately,
+and use genuine Windows installation media.
+</div>
+
+<h2>Conclusion</h2>
+
+<p>
+Understanding BIOS, UEFI, partition schemes, and Windows installation is an essential skill for every ICT
+student and technician. These concepts help you install operating systems correctly, troubleshoot installation
+errors, and prepare computers for reliable performance.
+</p>
+
+<p>
+At <strong>Enlight Vocational Institute</strong>, we provide practical ICT training that equips students with
+real-world skills in computer repair, networking, and system administration. Mastering these fundamentals is
+the first step toward becoming a confident and competent IT professional.
+</p>
+
+</article>
+
+</div>
+<!-- ===========================
+     RELATED ARTICLES SECTION
+     Place this section immediately above the <footer>
+     =========================== -->
+
+<section class="related-section">
+
+    <h2>Continue Learning</h2>
+
+    <p class="related-intro">
+        Expand your ICT knowledge with more tutorials, practical guides, and courses from
+        <strong>Enlight Vocational Institute</strong>.
+    </p>
+
+    <div class="related-grid">
+
+        <a href="computer-hardware.html" class="related-card">
+            <div class="icon">🖥️</div>
+            <h3>Computer Hardware Basics</h3>
+            <p>Understand computer components, maintenance, and troubleshooting.</p>
+            <span>Read Article →</span>
+        </a>
+
+        <a href="computer-networking.html" class="related-card">
+            <div class="icon">🌐</div>
+            <h3>Introduction to Computer Networking</h3>
+            <p>Learn networking concepts, IP addressing, routers, switches, and Wi-Fi.</p>
+            <span>Read Article →</span>
+        </a>
+
+        <a href="linux-basics.html" class="related-card">
+            <div class="icon">🐧</div>
+            <h3>Linux Basics</h3>
+            <p>Master essential Linux commands and file management techniques.</p>
+            <span>Read Article →</span>
+        </a>
+
+        <a href="windows-installation.html" class="related-card">
+            <div class="icon">💻</div>
+            <h3>Windows Installation Guide</h3>
+            <p>Follow a complete guide to installing and configuring Windows.</p>
+            <span>Read Article →</span>
+        </a>
+
+        <a href="courses.html" class="related-card">
+            <div class="icon">🎓</div>
+            <h3>ICT Courses</h3>
+            <p>Discover hands-on ICT programmes offered at Enlight Vocational Institute.</p>
+            <span>View Courses →</span>
+        </a>
+
+        <a href="blog.html" class="related-card">
+            <div class="icon">📚</div>
+            <h3>More Blog Articles</h3>
+            <p>Browse tutorials, technology news, and practical ICT tips.</p>
+            <span>Visit Blog →</span>
+        </a>
+
+    </div>
+
+</section>
+
+<style>
+
+/* ===========================
+   RELATED ARTICLES
+=========================== */
+
+.related-section{
+    margin-top:70px;
+    background:#f7fafc;
+    padding:60px 25px;
+    border-radius:15px;
+}
+
+.related-section h2{
+    text-align:center;
+    color:#0056b3;
+    margin-bottom:10px;
+    border:none;
+    padding:0;
+}
+
+.related-intro{
+    text-align:center;
+    max-width:750px;
+    margin:0 auto 40px;
+    color:#666;
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.related-card{
+    display:block;
+    background:#fff;
+    text-decoration:none;
+    color:#333;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.related-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+}
+
+.related-card .icon{
+    font-size:2.2rem;
+    margin-bottom:15px;
+}
+
+.related-card h3{
+    color:#0056b3;
+    margin-bottom:10px;
+    font-size:1.2rem;
+}
+
+.related-card p{
+    color:#555;
+    margin-bottom:18px;
+    font-size:.95rem;
+}
+
+.related-card span{
+    color:#009688;
+    font-weight:600;
+}
+
+@media(max-width:768px){
+
+.related-section{
+    padding:40px 18px;
+}
+
+.related-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+ <!-- FOOTER -->
+
+    <footer>
+      <!-- FOOTER TOP -->
+
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3 class="footer-title">About</h3>
+
+          <p>
+            Enlight Vocational Institute (EVI) was founded in 2021 under Enlight
+            Educational Institutions. EVI is a skills-based training institution
+            fully accredited and recognized by the Ministry of Education and the
+            National Council for Higher Education.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-title">Resources</h3>
+
+          <ul>
+            <li>
+              <a href="admissions.html">Admissions</a>
+            </li>
+
+            <li>
+              <a href="courses.html">Courses / Programs</a>
+            </li>
+
+            <li>
+              <a href="students-life.html">News & Events</a>
+            </li>
+
+            <li>
+              <a href="faq.html">FAQs</a>
+            </li>
+            <li>
+              <a href="docs/evi-brochure.pdf">Get Brochure</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-title">Contact</h3>
+
+          <ul>
+            <li>📍 Nkoma, Matugga - Uganda</li>
+
+            <li>📞 +256 775 101 897</li>
+
+            <li>
+              <a href="contact.html"> support@enlightinstitute.org </a>
+            </li>
+            <li>Mon - Fri: 8AM - 5PM</li>
+          </ul>
+
+          <div class="social-links">
+            <a href="facebook,com"><img src="img/icon/fb-logo.jpg" /></a>
+            <a href="#"><img src="img/icon/x.webp" /></a>
+            <a href="#"><img src="img/icon/linkedin.jpg" /></a>
+            <a href="#"><img src="img/icon/tiktok.jpg" /></a>
+            <a href="#"><img src="img/icon/instagram.jpg" /></a>
+          </div>
+
+          <a
+            href="https://wa.me/256775101897"
+            target="_blank"
+            class="whatsapp-btn"
+          >
+            <img src="img/icon/whatspp.webp" alt="WhatsApp" />
+          </a>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-title">Recent Posts</h3>
+          <div class="recent-posts">
+            <div class="recent-post1">
+              <a href="posts.html">
+                <img />
+                <h2>
+                  Enlight launches Mentorship training program in partnership
+                  with Signify Foundation
+                </h2>
+              </a>
+            </div>
+            <div class="recent-post2"></div>
+            <div class="recent-post3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM -->
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Enlight Vocational Institute. All rights reserved.</p>
+      </div>
+    </footer>
+
+</body>
+</html>
