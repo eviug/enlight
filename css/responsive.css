@@ -1,0 +1,479 @@
+/* =====================================================================
+   RESPONSIVE.CSS — Enlight Vocational Institute
+   Global responsive layer that pairs with style.css, menu.css and
+   footer.css. Load this file LAST so its rules can override the base
+   desktop styles at each breakpoint.
+
+   Breakpoints used across the site:
+     1024px  – small laptops / large tablets (light fine-tuning)
+     900px   – tablets (major grid collapses, 2-column layouts)
+     700px   – large phones (forms, split layouts stack fully)
+     480px   – small phones (single column everywhere, tighter type)
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   0. GLOBAL SAFETY NET
+   --------------------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+iframe,
+embed,
+object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* iframes with a fixed pixel height (maps) still need to shrink in width
+   without distorting; height is controlled per-component, this just
+   guarantees they never force horizontal scroll */
+iframe {
+  width: 100%;
+}
+
+table {
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* =====================================================================
+   1. NAVIGATION (pairs with menu.css)
+   ===================================================================== */
+@media (max-width: 960px) {
+  .brand img {
+    margin-left: 0; /* undo the desktop-only offset in menu.css */
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .ham {
+    display: flex;
+  }
+
+  .site-nav-inner {
+    padding: 0.7rem 1.2rem;
+  }
+
+  .brand-name {
+    font-size: 1.02rem;
+  }
+
+  .brand img {
+    height: 36px;
+    width: 36px;
+  }
+
+  .mobile-menu {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 600px;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu a.active {
+    color: var(--navy);
+    font-weight: 600;
+    background: var(--blue-tint);
+  }
+
+  /* the "More" flyout only makes sense on desktop hover/click layout */
+  .nav-more .nav-dropdown {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-name {
+    font-size: 0.95rem;
+  }
+}
+
+/* =====================================================================
+   2. HERO SECTIONS
+   (page-hero, admissionpage-hero, faq-page-hero, coursepage-hero,
+   blog-hero, home-hero and their per-page prefixed duplicates)
+   ===================================================================== */
+@media (max-width: 900px) {
+  [class*="-hero"],
+  [class*="hero-enlight"] {
+    padding: 3.2rem 1.5rem 3.8rem;
+  }
+
+  [class*="hero-shield"] {
+    width: 240px !important;
+    height: 260px !important;
+    opacity: 0.06;
+  }
+}
+
+@media (max-width: 600px) {
+  [class*="-hero"],
+  [class*="hero-enlight"] {
+    padding: 2.6rem 1.25rem 3.2rem;
+    text-align: left;
+  }
+
+  [class*="hero-meta"] {
+    gap: 1.4rem;
+  }
+
+  [class*="hero-buttons"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  [class*="hero-buttons"] a {
+    text-align: center;
+  }
+}
+
+/* =====================================================================
+   3 & 4. CARD GRIDS → SLIDE SIDEWAYS (not stacked)
+   Anywhere the grid holds independent, browsable "cards" — stat cards,
+   course/blog/news cards, testimonials, team members, feature/vision
+   cards — we keep them as one horizontal row and let it scroll rather
+   than collapsing to a single stacked column. This matches the
+   carousel treatment already used on the homepage (stats, courses,
+   news, alumni, vision cards) and extends it site-wide so behaviour
+   is consistent everywhere the same component appears.
+
+   Structural / form grids are handled separately in sections 5–7 and
+   are deliberately NOT included here — those need every field visible
+   at once, not swiped past.
+   ===================================================================== */
+[class*="info-grid"],
+[class*="timeline"]:not(.footer-post),
+.stats-grid,
+.home-features-grid,
+.simple-grid,
+[class*="team-section-grid"],
+.blog-grid,
+.courses-grid,
+.courses-wrapper,
+.news-grid,
+.alumni-grid,
+.related-grid,
+[class*="mission-vision"]:not(.aboutpage-mission-vision-card),
+.home-vision-card-grid,
+.culture-grid,
+.hub-grid {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[class*="info-grid"]::-webkit-scrollbar,
+[class*="timeline"]:not(.footer-post)::-webkit-scrollbar,
+.stats-grid::-webkit-scrollbar,
+.home-features-grid::-webkit-scrollbar,
+.simple-grid::-webkit-scrollbar,
+[class*="team-section-grid"]::-webkit-scrollbar,
+.blog-grid::-webkit-scrollbar,
+.courses-grid::-webkit-scrollbar,
+.courses-wrapper::-webkit-scrollbar,
+.news-grid::-webkit-scrollbar,
+.alumni-grid::-webkit-scrollbar,
+.related-grid::-webkit-scrollbar,
+[class*="mission-vision"]:not(.aboutpage-mission-vision-card)::-webkit-scrollbar,
+.home-vision-card-grid::-webkit-scrollbar,
+.culture-grid::-webkit-scrollbar,
+.hub-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tablet: two cards visible per view, third peeks at the edge */
+@media (max-width: 980px) {
+  [class*="info-grid"],
+  [class*="timeline"]:not(.footer-post),
+  .stats-grid,
+  .home-features-grid,
+  .simple-grid,
+  [class*="team-section-grid"],
+  .blog-grid,
+  .courses-grid,
+  .courses-wrapper,
+  .news-grid,
+  .alumni-grid,
+  .related-grid,
+  [class*="mission-vision"]:not(.aboutpage-mission-vision-card),
+  .home-vision-card-grid,
+  .culture-grid,
+  .hub-grid {
+    grid-template-columns: none !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: minmax(46%, 1fr) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.4rem;
+  }
+
+  [class*="info-grid"] > *,
+  [class*="timeline"]:not(.footer-post) > *,
+  .stats-grid > *,
+  .home-features-grid > *,
+  .simple-grid > *,
+  [class*="team-section-grid"] > *,
+  .blog-grid > *,
+  .courses-grid > *,
+  .courses-wrapper > *,
+  .news-grid > *,
+  .alumni-grid > *,
+  .related-grid > *,
+  [class*="mission-vision"]:not(.aboutpage-mission-vision-card) > *,
+  .home-vision-card-grid > *,
+  .culture-grid > *,
+  .hub-grid > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* Phone: one card in focus at a time, next card peeks at the edge */
+@media (max-width: 620px) {
+  [class*="info-grid"],
+  [class*="timeline"]:not(.footer-post),
+  .stats-grid,
+  .home-features-grid,
+  .simple-grid,
+  [class*="team-section-grid"],
+  .blog-grid,
+  .courses-grid,
+  .courses-wrapper,
+  .news-grid,
+  .alumni-grid,
+  .related-grid,
+  [class*="mission-vision"]:not(.aboutpage-mission-vision-card),
+  .home-vision-card-grid,
+  .culture-grid,
+  .hub-grid {
+    grid-auto-columns: minmax(82%, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* =====================================================================
+   4b. WHY CHOOSE US — stays a column grid, not a slider
+   These feature boxes read as a scannable checklist, not a browsable
+   carousel, so they collapse to fewer columns instead of sliding.
+   ===================================================================== */
+@media (max-width: 980px) {
+  [class*="why-choose"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  [class*="why-choose"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =====================================================================
+   5. TWO-COLUMN SPLIT LAYOUTS → single column
+   about/admission/contact splits, featured post, student-life split
+   ===================================================================== */
+@media (max-width: 900px) {
+  .aboutpage-section-container,
+  .home-about-grid,
+  .admission-content,
+  .contact-wrapper,
+  .contact-wrap,
+  .featured-post,
+  .student-life-content,
+  .split-layout,
+  .admission-image,
+  [class*="about-grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .aboutpage-image-carousel-container,
+  .home-about-image-carousel-container,
+  .admission-image,
+  .split-layout > div:last-child,
+  .student-gallery {
+    order: -1;
+  }
+
+  .featured-post-body {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .student-gallery {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+}
+
+/* =====================================================================
+   6. FORMS
+   form-grid, choice-row, subject-grid, admissions form fieldsets
+   ===================================================================== */
+@media (max-width: 760px) {
+  [class*="form-grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [class*="choice-row"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [class*="form-block"] {
+    padding: 1.4rem 1.2rem !important;
+  }
+
+  .radio-row {
+    flex-wrap: wrap;
+    gap: 0.9rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  [class*="subject-grid-6"],
+  [class*="subject-grid-4"],
+  [class*="subject-grid-8"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* =====================================================================
+   7. GALLERY / CAROUSEL GRIDS (department gallery, image carousels)
+   ===================================================================== */
+@media (max-width: 980px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .gallery-tile.wide {
+    grid-column: span 2 !important;
+  }
+
+  .gallery-filters {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.7rem !important;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+}
+
+/* =====================================================================
+   8. SECTION SPACING & TYPE SCALE
+   Tighten vertical rhythm and long headings on small screens without
+   touching component-specific font sizes already handled by clamp()
+   ===================================================================== */
+@media (max-width: 700px) {
+  section {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.4rem, 6vw, 1.9rem);
+  }
+
+  [class*="cta-banner"] {
+    padding: 2.4rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 1rem;
+  }
+}
+
+/* =====================================================================
+   9. TABLES / SLIDERS / MISC COMPONENTS
+   ===================================================================== */
+@media (max-width: 700px) {
+  [class*="courses_slider"],
+  [class*="courses-slider"] {
+    aspect-ratio: 4 / 3;
+  }
+
+  .contact-map iframe,
+  .map-wrap iframe,
+  [class*="map-container"] iframe {
+    height: 280px;
+  }
+}
+
+/* =====================================================================
+   10. LARGE-SCREEN FINE TUNING (>1024px stays as authored in style.css)
+   Nothing required here today — reserved for future wide-screen tweaks.
+   ===================================================================== */

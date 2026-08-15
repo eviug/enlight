@@ -1,0 +1,198 @@
+
+/* ---------------- NAV ---------------- */
+        .site-nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .site-nav-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: .8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            flex: 0 0 auto;
+        }
+
+        .brand img {
+            height: 42px;
+            width: 42px;
+            margin-left: -5rem;
+        }
+
+        .brand-name {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--navy-deep);
+            line-height: 1.15;
+            white-space: nowrap;
+        }
+
+        .brand-name small {
+            display: block;
+            font-family: var(--body);
+            font-weight: 500;
+            font-size: .55rem;
+            letter-spacing: .06em;
+            color: var(--slate);
+            text-transform: none;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+            font-size: .88rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--slate);
+            transition: color .2s;
+            position: relative;
+            padding: .3rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-links a.active {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -4px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .nav-more {
+            position: relative;
+        }
+
+        .nav-more>button {
+            background: none;
+            border: none;
+            font: inherit;
+            color: var(--slate);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            padding: .3rem 0;
+        }
+
+        .nav-more>button:hover {
+            color: var(--navy);
+        }
+
+        .nav-more .chev {
+            width: 9px;
+            height: 9px;
+            border-right: 1.6px solid currentColor;
+            border-bottom: 1.6px solid currentColor;
+            transform: rotate(45deg);
+            margin-top: -3px;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 14px);
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: 0 20px 40px -18px rgba(16, 32, 63, .28);
+            min-width: 180px;
+            padding: .5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: .18s;
+        }
+
+        .nav-more.open .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: .55rem .8rem;
+            border-radius: 5px;
+            font-size: .86rem;
+            color: var(--ink);
+        }
+
+        .nav-dropdown a:hover {
+            background: var(--blue-tint);
+            color: var(--navy);
+        }
+
+        .nav-dropdown a.active {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white);
+            padding: .6rem 1.25rem;
+            border-radius: 4px;
+            font-size: .83rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: background .2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--navy-deep);
+        }
+
+        .ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: .4rem;
+        }
+
+        .ham span {
+            width: 22px;
+            height: 2px;
+            background: var(--navy-deep);
+            display: block;
+            transition: .2s;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+       
