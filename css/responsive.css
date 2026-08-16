@@ -377,8 +377,9 @@ table {
   [class*="subject-grid-6"],
   [class*="subject-grid-4"],
   [class*="subject-grid-8"] {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 1fr !important;
   }
+      
 }
 
 /* =====================================================================
