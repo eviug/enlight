@@ -1,4 +1,3 @@
-
 /* ---------------- NAV ---------------- */
         .site-nav {
             background: var(--white);
@@ -175,24 +174,54 @@
 
         .ham {
             display: none;
-            flex-direction: column;
-            gap: 5px;
+            position: relative;
+            width: 22px;
+            height: 16px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: .4rem;
+            padding: 0;
+            margin: .4rem;
         }
 
         .ham span {
+            position: absolute;
+            left: 0;
             width: 22px;
             height: 2px;
             background: var(--navy-deep);
             display: block;
-            transition: .2s;
+            transition: transform .25s ease, opacity .2s ease, top .25s ease;
+        }
+
+        .ham span:nth-child(1) {
+            top: 0;
+        }
+
+        .ham span:nth-child(2) {
+            top: 7px;
+        }
+
+        .ham span:nth-child(3) {
+            top: 14px;
+        }
+
+        /* hamburger -> X, driven purely by the existing .mobile-menu.open
+           toggle (no extra JS or classes needed) */
+        .site-nav:has(.mobile-menu.open) .ham span:nth-child(1) {
+            top: 7px;
+            transform: rotate(45deg);
+        }
+
+        .site-nav:has(.mobile-menu.open) .ham span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .site-nav:has(.mobile-menu.open) .ham span:nth-child(3) {
+            top: 7px;
+            transform: rotate(-45deg);
         }
 
         .mobile-menu {
             display: none;
         }
-
-       

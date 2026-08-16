@@ -128,8 +128,9 @@ table {
   .brand-name {
     font-size: 0.95rem;
   }
-   .brand-name small{
-      font-size: .44rem;
+  .brand-name small {
+    font-size: 0.44rem;
+  }
 }
 
 /* =====================================================================
@@ -349,7 +350,12 @@ table {
     gap: 0.6rem !important;
   }
 }
-
+@media (max-width:420px){
+  .contactpage-container{
+    grid-template-columns: 1fr;
+    background-color: red;
+  }
+} 
 /* =====================================================================
    6. FORMS
    form-grid, choice-row, subject-grid, admissions form fieldsets
@@ -379,7 +385,12 @@ table {
   [class*="subject-grid-8"] {
     grid-template-columns: 1fr !important;
   }
-      
+  [class*="choice-row"] {
+    grid-template-columns: 1fr !important;
+  }
+  [class*="form-block"] {
+    padding: 1.4rem 1.2rem !important;
+  }
 }
 
 /* =====================================================================
