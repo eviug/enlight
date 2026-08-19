@@ -436,6 +436,10 @@ table {
   select {
     width: 90vw;
   }
+    /* Portfolio */
+    .portfolio-grid{
+      grid-template-columns: 1fr;
+    }
 }
 
 /* =====================================================================
