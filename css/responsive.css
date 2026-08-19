@@ -14,8 +14,10 @@
 /* ---------------------------------------------------------------------
    0. GLOBAL SAFETY NET
    --------------------------------------------------------------------- */
+
 html {
   -webkit-text-size-adjust: 100%;
+  width: 100%;
 }
 
 body {
@@ -124,14 +126,47 @@ table {
   }
 }
 
-@media (max-width: 420px) {
+@media (min-width:320px) and (max-width: 480px) {
   .brand-name {
     font-size: 0.95rem;
   }
   .brand-name small {
     font-size: 0.44rem;
   }
+ .mobile-menu {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 800px;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu a.active {
+    color: var(--navy);
+    font-weight: 600;
+    background: var(--blue-tint);
+  }
 }
+
+
 
 /* =====================================================================
    2. HERO SECTIONS
@@ -218,7 +253,9 @@ table {
 .news-grid::-webkit-scrollbar,
 .alumni-grid::-webkit-scrollbar,
 .related-grid::-webkit-scrollbar,
-[class*="mission-vision"]:not(.aboutpage-mission-vision-card)::-webkit-scrollbar,
+[class*="mission-vision"]:not(
+    .aboutpage-mission-vision-card
+  )::-webkit-scrollbar,
 .home-vision-card-grid::-webkit-scrollbar,
 .culture-grid::-webkit-scrollbar,
 .hub-grid::-webkit-scrollbar {
@@ -294,6 +331,9 @@ table {
     grid-auto-columns: minmax(82%, 1fr) !important;
     gap: 1rem !important;
   }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =====================================================================
@@ -350,12 +390,11 @@ table {
     gap: 0.6rem !important;
   }
 }
-@media (max-width:420px){
-  .contactpage-container{
-    grid-template-columns: 1fr;
-    background-color: red;
+@media (max-width: 480px) {
+  .contact-container {
+    grid-template-columns: 1fr !important;
   }
-} 
+}
 /* =====================================================================
    6. FORMS
    form-grid, choice-row, subject-grid, admissions form fieldsets
@@ -379,7 +418,7 @@ table {
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 480px) {
   [class*="subject-grid-6"],
   [class*="subject-grid-4"],
   [class*="subject-grid-8"] {
@@ -389,7 +428,13 @@ table {
     grid-template-columns: 1fr !important;
   }
   [class*="form-block"] {
-    padding: 1.4rem 1.2rem !important;
+    margin-left: -3rem;
+    margin-right: 0;
+  }
+  .form-feild,
+  label,
+  select {
+    width: 90vw;
   }
 }
 
@@ -469,6 +514,21 @@ table {
   .wrap {
     padding: 0 1rem;
   }
+
+  /* Internships  */
+  
+  .inner-section{
+    padding:0; 
+    padding-bottom:1rem;
+  }
+  
+  .icon-card-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field-grid{
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* =====================================================================
@@ -488,6 +548,14 @@ table {
 }
 
 /* =====================================================================
-   10. LARGE-SCREEN FINE TUNING (>1024px stays as authored in style.css)
-   Nothing required here today — reserved for future wide-screen tweaks.
+   11. ACCESSIBILITY — reduced motion
    ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .aboutpage-image-slides {
+    animation: none;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+  }
+}
